@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Validate backend function" errors="0" tests="8" failures="0" time="0.561" timestamp="2022-11-14T16:09:27">
+  <testcase classname="Validate backend function" name="Test POST/register" time="0.028"></testcase>
+  <testcase classname="Validate backend function" name="Test POST/login" time="0.063"></testcase>
+  <testcase classname="Validate backend function" name="Test GET/headline" time="0.063"></testcase>
+  <testcase classname="Validate backend function" name="Test PUT/headline" time="0.061"></testcase>
+  <testcase classname="Validate backend function" name="Test GET/articles" time="0.077"></testcase>
+  <testcase classname="Validate backend function" name="Test Post/article" time="0.108"></testcase>
+  <testcase classname="Validate backend function" name="Test GET/articles/id" time="0.108"></testcase>
+  <testcase classname="Validate backend function" name="Test PUT/logout" time="0.045"></testcase>
+</testsuite>
+</testsuites>
