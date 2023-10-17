@@ -46,7 +46,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "ricebook-nodejs"
+      "name": "ricebook-backend"
     }
   ],
   "placementConstraints": [],
