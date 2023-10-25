@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:126261072408:task-definition/ricebook-backend-task-definition:17",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:126261072408:task-definition/ricebook-nodejs-task-definition:1",
     "containerDefinitions": [
         {
             "name": "ricebook-backend",
-            "image": "126261072408.dkr.ecr.us-east-1.amazonaws.com/ricebook-backend:784ed8c4ef64ec4da706f8b6e9a2ab9deee9870c",
+            "image": "126261072408.dkr.ecr.us-east-1.amazonaws.com/ricebook-backend:latest",
             "cpu": 0,
             "portMappings": [
                 {
@@ -11,6 +11,7 @@
                     "containerPort": 4000,
                     "hostPort": 80,
                     "protocol": "tcp",
+                    "appProtocol": "http"
                 }
             ],
             "essential": true,
@@ -23,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/ricebook-backend-task-definition",
+                    "awslogs-group": "/ecs/ricebook-nodejs-task-definition",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -31,10 +32,10 @@
             }
         }
     ],
-    "family": "ricebook-backend-task-definition",
+    "family": "ricebook-nodejs-task-definition",
     "taskRoleArn": "arn:aws:iam::126261072408:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::126261072408:role/ecsTaskExecutionRole",
-    "revision": 17,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -71,12 +72,12 @@
         "EC2"
     ],
     "cpu": "1024",
-    "memory": "819",
+    "memory": "1024",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-10-18T02:16:08.751Z",
+    "registeredAt": "2023-10-25T20:16:10.670Z",
     "registeredBy": "arn:aws:iam::126261072408:root",
     "tags": []
 }
