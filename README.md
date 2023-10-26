@@ -1,4 +1,4 @@
-# Switch branch EC2 to access CI/CD of NodeJS server to AWS
+# Note: Switch branch EC2 to access CI/CD of NodeJS server to AWS
 
 Test:
 
