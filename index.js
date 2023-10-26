@@ -20,18 +20,7 @@ let articles = [{ id: 0, author: 'Mack', body: 'Post 1' },
     { id: 1, author: 'Jack', body: 'Post 2' },
     { id: 2, author: 'Zack', body: 'Post 3' }];
 
-const hello = (req, res) => res.send({ text: 'hello world!!' });
-
-const getArticles = (req, res) => res.send(articles);
-
-// TODO: get the correct article by using the id
-const getArticle = (req, res) => {
-    res.send(articles[req.params.id]);
-
-}
-
-
-    // res.send(articles[res.params.id]);
+const hello = (req, res) => res.send({ text: 'hello world!' });
 
 
 const addArticle = (req, res) => {
