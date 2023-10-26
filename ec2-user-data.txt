@@ -1,0 +1,19 @@
+#!/bin/sh
+export PATH=/usr/local/bin:$PATH;
+
+# install docker
+sudo apt update
+sudo apt install docker.io -y
+sudo snap install docker
+sudo systemctl status docker
+
+# give permission for docker command
+sudo su
+chmod 777 /var/run/docker.sock
+
+# connect ec2 with github actions runner
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
+./config.sh --url https://github.com/bd5105625/ricebook-backend --token AJWGMHHG57YWQJGLTO7EP5TFHLU3M
+./run.sh

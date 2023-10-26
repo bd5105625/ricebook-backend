@@ -23,7 +23,7 @@ jobs:
     runs-on: [aws-ec2-ricebook-nodejs]
     steps:
       - name: Pull images from docker hub
-        run: docker pull bd5105625/ricebook-backend-nodejs:latest
+        run: docker pull bd5105625/ricebook-backend-nodejs
       - name: Delete old container
         run: docker rm -f nodejs-app-container
       - name: Run docker container
