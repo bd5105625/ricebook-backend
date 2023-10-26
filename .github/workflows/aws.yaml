@@ -6,12 +6,26 @@ on:
 
 jobs:
   build:
+    runs-on: [ ubuntu-latest ]
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t ricebook-backend-nodejs . 
+        run: docker build -t bd5105625/ricebook-backend-nodejs . 
       - name: Publish image to docker hub
-        run: docker push 
+        run: docker push bd5105625/ricebook-backend-nodejs:latest
+
+  deploy:
+    needs: build 
+    runs-on: [aws-ec2-ricebook-nodejs]
+    steps:
+      - name: Pull images from docker hub
+        run: docker pull bd5105625/ricebook-backend-nodejs:latest
+      - name: Delete old container
+        run: docker rm -f nodejs-app-container
+      - name: Run docker container
+        run: docker run -d -p 4000:4000 -name nodejs-app-container bd5105625/ricebook-backend-nodejs
+        
