@@ -40,12 +40,14 @@
  
   - Write jobs - in these section only build and deploy
      - Build
+       
          runs-on: what os to run these command
-         steps:
-           - Login to docker hub
-               set your username and password in repo/settings/secret
-           - Build docker image
-           - Publish image to docker hub (default public images on docker hub)
+        
+          steps:
+          - Login to docker hub, set your username and password in repo/settings/secret
+          - Build docker image
+          - Publish image to docker hub (default public images on docker hub)
+       
        
      - Deploy
  
@@ -59,10 +61,11 @@
 
     - Launch EC2
       - Select Ubuntu AMI
-      - Set secruity group and the inbound port which is same with port in docker file
+      - Set secruity group and the inbound port which is same with the port in docker file
       
     - Write User data
-      Take a look at ec2-user-data.txt file
+
+      Just take a look at ec2-user-data.txt file
       
     - run runners commands on EC2 instance
       
