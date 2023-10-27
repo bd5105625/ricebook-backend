@@ -1,4 +1,4 @@
-# Note: Switch branch to EC2 to access CI/CD pipeline for deploying NodeJS server to AWS
+## Note: Switch branches to EC2 to access CI/CD pipeline for deploying NodeJS server to AWS
 
 Test:
 
