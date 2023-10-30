@@ -1,3 +1,4 @@
+# ip of ec2-instance: 52.90.242.168, DNS: ec2-52-90-242-168.compute-1.amazonaws.com
 name: CICD
 
 on:
@@ -23,7 +24,7 @@ jobs:
     runs-on: [aws-ec2-ricebook-nodejs]
     steps:
       - name: Give permission for docker command
-        run: 
+        run: |
           sudo su
           chmod 777 /var/run/docker.sock
       - name: Delete previous images
