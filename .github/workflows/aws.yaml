@@ -22,6 +22,12 @@ jobs:
     needs: build 
     runs-on: [aws-ec2-ricebook-nodejs]
     steps:
+      - name: Give permission for docker command
+        run: 
+          sudo su
+          chmod 777 /var/run/docker.sock
+      - name: Delete previous images
+        run: docker rmi bd5105625/ricebook-backend-nodejs:latest
       - name: Pull images from docker hub
         run: docker pull bd5105625/ricebook-backend-nodejs
       - name: Delete old container
