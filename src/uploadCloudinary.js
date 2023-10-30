@@ -4,9 +4,8 @@
 const multer = require('multer')
 const stream = require('stream')
 const cloudinary = require('cloudinary')
-CLOUDINARY_URL="cloudinary://841713727252874:9gQhw6XwV2O9L4Lzk81Dt_Ck0ks@hgvyoyuan"
+CLOUDINARY_URL= process.env.CLOUDINARY_URL
 
-// CLOUDINARY_URL="cloudinary://644287391274748:LHTeTRPC7pfHipaYQYwvBlfNZ4M@hze2krlee"
 
 
 

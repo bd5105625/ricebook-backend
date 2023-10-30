@@ -3,13 +3,15 @@ const getUsernameFromCookie = require('./auth').getUsernameFromCookie;
 const mongoose = require('mongoose')
 const profileSchema = require('./Schema/profileSchema')
 const Profile = mongoose.model('Profile', profileSchema)
-const connectionString = "mongodb+srv://users_for_531:1234567890@cluster0.rano8e1.mongodb.net/social?retryWrites=true&w=majority";
+
+// const connectionString = process.env.MONGO_URL
+
 
 const getFollowing = (req, res) => {
     // console.log("test")
     // res.send("test")
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         username = getUsernameFromCookie(req);
         const user = await Profile.findOne({ username: username });
         if (!user) {
@@ -23,7 +25,7 @@ const getFollowing = (req, res) => {
 const putFollowing = (req, res) => {
     // this add the user to the following list
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         // get username from cookie
         let username = getUsernameFromCookie(req);
         
@@ -43,7 +45,7 @@ const putFollowing = (req, res) => {
 const deleteFollowing = (req, res) => {
     // this remove the user from the following list
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         // get username from cookie
         let username = getUsernameFromCookie(req);
         const delete_user = await Profile.findOne({ displayname: req.params.user });

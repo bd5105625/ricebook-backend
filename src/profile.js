@@ -10,7 +10,8 @@ const userSchema = require('./Schema/userSchema')
 const profileSchema = require('./Schema/profileSchema')
 const User = mongoose.model('User', userSchema)
 const Profile = mongoose.model('Profile', profileSchema)
-const connectionString = "mongodb+srv://users_for_531:1234567890@cluster0.rano8e1.mongodb.net/social?retryWrites=true&w=majority";
+// const connectionString = process.env.MONGO_URL
+
 const multer = require('multer')
 const stream = require('stream')
 const upCloud = require('./uploadCloudinary')
@@ -28,7 +29,7 @@ const getHeadline = (req, res) => {
     console.log("in getHeadline");
     // this return the requested user headline
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await Profile.findOne({ username: req.params.user });
         if (!user) {
             return res.sendStatus(401);
@@ -45,7 +46,7 @@ const putHeadline = (req, res) => {
     // this update the user headline
     console.log("in putHeadline");
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOneAndUpdate({ username: username }, { headline: req.body.headline });
         if (!user) {
@@ -62,7 +63,7 @@ const putHeadline = (req, res) => {
 const getEmail = (req, res) => {
     // this return the user email
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await Profile.findOne({ username: req.params.user });
         if (!user) {
             return res.sendStatus(401);
@@ -75,7 +76,7 @@ const getEmail = (req, res) => {
 const putEmail = (req, res) => {
     // this update the user email
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOneAndUpdate({ username: username }, { email: req.body.email });
         if (!user) {
@@ -89,7 +90,7 @@ const putEmail = (req, res) => {
 const getZipcode = (req, res) => {
     // this return the user zipCode
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await Profile.findOne({ username: req.params.user });
         if (!user) {
             return res.sendStatus(401);
@@ -102,7 +103,7 @@ const getZipcode = (req, res) => {
 const putZipcode = (req, res) => {
     // this update the user zipCode
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOneAndUpdate({ username: username }, { zipcode: req.body.zipcode });
         if (!user) {
@@ -125,7 +126,7 @@ const putZipcode = (req, res) => {
 const getAvatar = (req, res) => {
     // this return the user avatar
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await Profile.findOne({ username: req.params.user });
         if (!user) {
             return res.sendStatus(401);
@@ -139,7 +140,7 @@ const putAvatar = (req, res) => {
     //form-data
     // this update the user avatar
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         // let username = getUsernameFromCookie(req);
         // const user = await Profile.findOneAndUpdate({ username: req.body.user, avatar: req.body.avatar });
         const user = await Profile.findOne({ username: req.body.user });
@@ -186,7 +187,7 @@ const doUpload = (publicId, req, res, next) => {
 const getDob = (req, res) => {
     // this return the user dob
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOne({ username: username });
         if (!user) {
@@ -217,7 +218,7 @@ const testhere = (req, res) => {
 const getProfile = (req, res) => {
     // this return the user profile
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOne({ username: username });
         if (!user) {
@@ -233,7 +234,7 @@ const getProfile = (req, res) => {
 const putDisplayname = (req, res) => {
     // this update the user displayname
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let username = getUsernameFromCookie(req);
         const user = await Profile.findOneAndUpdate({ username: username }, { displayname: req.body.displayname });
         if (!user) {
@@ -247,7 +248,7 @@ const putDisplayname = (req, res) => {
 const putProfile = (req, res) => {
     // this update the user profile
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         // const user = await Profile.findOneAndUpdate({ username: req.body.user , displayname: req.body.displayname, phone: req.body.phone, zipcode: req.body.zipcode, email: req.body.email});
         const user = await Profile.findOne({ username: req.body.user });
         if (!user) {
@@ -290,7 +291,7 @@ const putProfile = (req, res) => {
 const getFollowerProfile = (req, res) => {
     // this return the user profile
     (async () => {
-    const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+    // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
     // let username = getUsernameFromCookie(req);
     // console.log("I'm in getFollowerProfile and what is username", username)
     console.log("get follower's profile", req.body.follower)
