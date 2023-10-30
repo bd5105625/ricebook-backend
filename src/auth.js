@@ -6,7 +6,7 @@ const Profile = mongoose.model('Profile', profileSchema)
 
 
 
-const connectionString = "mongodb+srv://users_for_531:1234567890@cluster0.rano8e1.mongodb.net/social?retryWrites=true&w=majority";
+// const connectionString = process.env.MONGO_URL
 
 
 let userObjs = { };
@@ -42,7 +42,7 @@ const login = (req, res) => {
     //get user from database
     (async () => {
         console.log("in login")
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await User.findOne({ username: username });
         if (!user) {
             return res.sendStatus(401);
@@ -93,7 +93,7 @@ const logout = (req, res) => {
 const register = (req, res) => {
     (async () => {
         console.log("in register")
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const username = req.body.username;
         const password = req.body.password;
 
@@ -143,7 +143,7 @@ const putPassword = (req, res) => {
     let username = sessionUser[sid];
     // change password in database
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const user = await User.findOne({ username: username });
         if (!user) {
             return res.sendStatus(401);

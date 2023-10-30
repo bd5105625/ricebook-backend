@@ -7,6 +7,22 @@ const following = require('./src/following')
 const article = require('./src/articles')
 var cors = require('cors')
 
+const connectionString = process.env.MONGO_URL
+
+const connectDB = async () => {
+    try {
+        await mongoose.connect(connectionString, {
+            useNewUrlParser: true, 
+            useUnifiedTopology: true
+        })
+
+        console.log("MongoDB connected!")
+    } catch (err) {
+        console.log('Failed to connect to MongoDB', err)
+    }
+}
+connectDB()
+
 const corsOptions = {
     origin: 'http://localhost:3001',
     // origin: 'http://brad_ricebook.surge.sh',
