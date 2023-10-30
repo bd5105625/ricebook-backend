@@ -28,12 +28,12 @@ jobs:
       #     sudo su
       #     chmod 777 /var/run/docker.sock
       #     exit
+      - name: Delete old container
+        run: docker rm -f nodejs-app-container
       - name: Delete previous images
         run: docker rmi bd5105625/ricebook-backend-nodejs:latest
       - name: Pull images from docker hub
         run: docker pull bd5105625/ricebook-backend-nodejs
-      - name: Delete old container
-        run: docker rm -f nodejs-app-container
       - name: Run docker container
         run: docker run -d -p 4000:4000 --name nodejs-app-container bd5105625/ricebook-backend-nodejs
         
