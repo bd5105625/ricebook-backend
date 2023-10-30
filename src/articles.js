@@ -2,7 +2,6 @@
 const mongoose = require('mongoose')
 const articleSchema = require('./Schema/articleSchema')
 const Article = mongoose.model('Article', articleSchema)
-const connectionString = "mongodb+srv://users_for_531:1234567890@cluster0.rano8e1.mongodb.net/social?retryWrites=true&w=majority";
 
 const getUsernameFromCookie = require('./auth').getUsernameFromCookie;
 
@@ -23,7 +22,7 @@ async function createArticle(id, username, text, url) {
 
 const getArticles = (req, res) => {
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         let users = req.body.follower
         users.push(req.body.user)
         // console.log("users", users, req.body.follower)
@@ -42,7 +41,7 @@ const getArticles = (req, res) => {
 
 const getArticle = (req, res) => {
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const username = getUsernameFromCookie(req);
         let parameter = req.params.id;
         let article = await Article.find({ author: parameter})
@@ -60,7 +59,7 @@ const getArticle = (req, res) => {
 
 const addArticle = (req, res) => {
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const username = getUsernameFromCookie(req);
         const articles = await Article.find({ author: req.body.author });
         if (articles.length == 0) {
@@ -81,42 +80,19 @@ const addArticle = (req, res) => {
 
 const putArticle = (req, res) => {
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const username = req.body.user
         const article = await Article.findOne({ author: username, _id: req.params.id});
         article.text = req.body.text;
         article.save();
         res.send({newArticles: article})
-        // console.log("length of existing articles", article.length)
-        // console.log(article)
-        // // no article found
-        // if (article.length == 0) {
-        //     console.log("no article")
-        //     // res.send({ articles: [] });
-        //     return res.sendStatus(403);
-        // }
-        // else {
-        //     let comment = req.body.commentId;
-        //     let id = req.params.id;
-        //     // let article = articles[id];
-        //     // let article = articles.find((article) => article._id == id);
-        //     console.log("article found, _id is", id, "article is", article)
-        //     if (comment) {   // add comment
-        //         article.comments.push(comment);
-        //     }
-        //     else {  // update article
-        //         article.text = req.body.text;
-        //     }
-        //     article.save();
-        //     res.send({articles: article});
-        // }
 
     })()
 }
 
 const putComment = (req, res) => {
     (async () => {
-        const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+        // const connector = mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
         const article = await Article.findOne({ author: req.body.author, _id: req.body._id});
         console.log("req.body", req.body, "article", article)
         let todo = {
