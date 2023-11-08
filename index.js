@@ -28,7 +28,8 @@ const connectDB = async () => {
 connectDB()
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://ricebook-service-hhe7r7shta-uc.a.run.app/',
+    // origin: 'http://localhost:3000',
     // origin: 'http://brad_ricebook.surge.sh',
     credentials: true,
     
