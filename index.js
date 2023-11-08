@@ -32,7 +32,6 @@ const corsOptions = {
     // origin: 'http://localhost:3000',
     // origin: 'http://brad_ricebook.surge.sh',
     credentials: true,
-    
     // allowCredentials: "true"
     
 }
