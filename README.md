@@ -6,9 +6,9 @@ username: Brad
 
 password: 1234
 
-"frontend" : "http://brad_ricebook.surge.sh"
+"frontend" : "https://ricebook-brad.surge.sh"
 
-"backend" : "https://finalwebbrad.herokuapp.com"
+"backend" : "https://ricebook-backend-65d6f66f731f.herokuapp.com"
 
 Language: JavaScript
 
